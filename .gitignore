@@ -1,0 +1,15 @@
+# Entornos virtuales
+venv/
+# Archivos de base de datos
+db.sqlite3
+# Archivos de cache de Python
+*.pyc
+__pycache__/
+# Carpetas de configuración y entorno
+.vscode/
+# Archivos compilados
+*.pyo
+# Archivos de construcción
+build/
+#static creado por el comando collectstatic
+static/
