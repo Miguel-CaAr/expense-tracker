@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class category(models.Model):
+class Category(models.Model):
     user_id = models.ForeignKey(
         User, verbose_name="ID del usuario", on_delete=models.CASCADE)
     name = models.CharField(
@@ -20,7 +20,7 @@ class category(models.Model):
         return f"{self.name} - by {self.user_id.username}"
 
 
-class expense(models.Model):
+class Expense(models.Model):
     user_id = models.ForeignKey(
         User, verbose_name="ID del usuario", on_delete=models.CASCADE)
     amount = models.DecimalField(
@@ -28,7 +28,7 @@ class expense(models.Model):
     description = models.TextField(
         verbose_name="Descripcion del monto", blank=True, max_length=500)
     category_id = models.ForeignKey(
-        category, verbose_name="Categoria del gasto", on_delete=models.SET_NULL, null=True)
+        Category, verbose_name="Categoria del gasto", on_delete=models.SET_NULL, null=True)
     date_of_registration = models.DateTimeField(
         verbose_name="Fecha del registro", auto_now_add=True)
 
