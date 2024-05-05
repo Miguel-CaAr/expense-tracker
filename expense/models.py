@@ -24,7 +24,7 @@ class Expense(models.Model):
     user_id = models.ForeignKey(
         User, verbose_name="ID del usuario", on_delete=models.CASCADE)
     amount = models.DecimalField(
-        verbose_name="Monto del gasto", max_digits=8, decimal_places=2)
+        verbose_name="Monto del gasto", max_digits=10, decimal_places=2)
     description = models.TextField(
         verbose_name="Descripcion del monto", blank=True, max_length=500)
     category_id = models.ForeignKey(

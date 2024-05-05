@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import ExpenseForm
+from .models import Expense
 
 # Create your views here.
 
@@ -37,10 +38,13 @@ def signup(request):
 
 
 def expense(request):
-    return render(request, 'expense.html')
+    expenses = Expense.objects.filter(user_id=request.user)
+    return render(request, 'expense.html', {
+        "expenses" : expenses,
+    })
 
 
-def create_expense(request):
+def create_expense(request):    
     if request.method == 'GET':
         return render(request, "create_expense.html", {
             'form': ExpenseForm

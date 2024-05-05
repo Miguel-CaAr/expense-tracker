@@ -4,7 +4,8 @@
 <h1>Create expense</h1>
 {{error}}
 <form action="/expense/create/" method="POST">
-  {% csrf_token %} {{ form }}
+  {% csrf_token %} 
+  {{ form }}
   <button>Guardar</button>
 </form>
 

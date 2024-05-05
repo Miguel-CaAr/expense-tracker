@@ -3,5 +3,13 @@
 {% block content %}
 <main>
   <h1>Gastos</h1>
+  <ul>
+    {% for expense in expenses %}
+      <li>
+        <h3>${{ expense.amount }}</h3>
+        <p>{{ expense.description }}</p>
+      </li>
+    {% endfor %}
+  </ul>
 </main>
 {% endblock %}
