@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .forms import ExpenseForm
-from .models import Expense
+from .models import Expense, Category
 
 # Create your views here.
 
@@ -44,22 +44,41 @@ def expense(request):
     })
 
 
-def create_expense(request):    
+def expense_create(request):
     if request.method == 'GET':
-        return render(request, "create_expense.html", {
-            'form': ExpenseForm
+        form = ExpenseForm()
+        form.fields["category_id"].queryset = Category.objects.filter(user_id=request.user)
+        return render(request, "expense_create.html", {
+            'form': form
         })
     else:
         try:
             form = ExpenseForm(request.POST)
-            form.user = request.user
-            form.save()
+            new_expense = form.save(commit=False)
+            new_expense.user_id = request.user
+            new_expense.save()
             return redirect("/expense/")
         except ValueError:
-            return render(request, "create_expense.html", {
+            return render(request, "expense_create.html", {
                 'form': ExpenseForm,
                 'error': "Verifique los datos ingresados"
             })
+
+
+def expense_update(request, expense_id):
+    if request.method == 'GET':
+        expense = get_object_or_404(Expense, pk=expense_id)
+        form = ExpenseForm(instance=expense)
+        return render(request, "expense_update.html", {
+            "expense": expense,
+            "form": form
+        })
+    else:
+        expense = get_object_or_404(Expense, pk=expense_id)
+        form = ExpenseForm(request.POST, instance=expense)
+        form.save()
+        return redirect("expense")        
+
 
 def signout(request):
     logout(request)

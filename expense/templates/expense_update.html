@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <section>
+    <h1>Detalles del gasto</h1>
+    <p>{{ expense.amount }}</p>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button>Actualizar</button>
+    </form>
+  </section>
+{% endblock %}

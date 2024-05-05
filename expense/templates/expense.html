@@ -1,14 +1,18 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block content %}
 <main>
   <h1>Gastos</h1>
   <ul>
     {% for expense in expenses %}
-      <li>
-        <h3>${{ expense.amount }}</h3>
-        <p>{{ expense.description }}</p>
-      </li>
+    <li>
+      <h3>${{ expense.amount }}</h3>
+      <p>{{ expense.category_id.name }}</p>
+      <p>{{ expense.date_of_registration }}</p>
+      <a href="{% url 'expense_update' expense.id %}">
+        <button>Editar</button>
+      </a>
+    </li>
     {% endfor %}
   </ul>
 </main>

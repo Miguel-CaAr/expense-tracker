@@ -17,7 +17,7 @@ class Category(models.Model):
         verbose_name_plural = "Categorias"
 
     def __str__(self) -> str:
-        return f"{self.name} - by {self.user_id.username}"
+        return f"{self.name}"
 
 
 class Expense(models.Model):
