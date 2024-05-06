@@ -1,9 +1,12 @@
 from django.forms import ModelForm
-from .models import Expense
+from .models import Expense, Category
 
 class ExpenseForm(ModelForm):
   class Meta:
     model = Expense
     fields = ['amount', 'description', 'category_id',]
-    # list_display = ['user_id', 'amount', 'description', 'category_id', 'date_of_registration']
-    # readonly_fields = ("date_of_registration",)
+    
+class CategoryForm(ModelForm):
+  class Meta:
+    model = Category
+    fields = ['name', 'description']

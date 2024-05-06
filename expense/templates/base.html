@@ -8,9 +8,6 @@
   <body>
     <nav>
       <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
         {% if user.is_authenticated %}
         <li>
           <a href="/expense">Gastos</a>
@@ -19,9 +16,15 @@
           <a href="/expense/create">Crear gasto</a>
         </li>
         <li>
+          <a href="/categories/create/">Crear categoria</a>
+        </li>
+        <li>
           <a href="/logout">Cerrar sesion</a>
         </li>
         {% else %}
+        <li>
+          <a href="/">Inicio</a>
+        </li>
         <li>
           <a href="/signup">Registrarse</a>
         </li>
