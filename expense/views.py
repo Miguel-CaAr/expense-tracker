@@ -80,6 +80,13 @@ def expense_update(request, expense_id):
         return redirect("expense")        
 
 
+def expense_delete(request, expense_id):
+    expense = get_object_or_404(Expense, pk=expense_id, user_id=request.user)
+    if request.method == "POST":
+        expense.delete()
+        return redirect("/expense/")
+
+
 def signout(request):
     logout(request)
     return redirect("home")

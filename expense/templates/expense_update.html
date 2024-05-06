@@ -8,5 +8,9 @@
       {{ form.as_p }}
       <button>Actualizar</button>
     </form>
+    <form action="{% url 'expense_delete' expense.id %}" method="POST">
+      {% csrf_token %}
+      <button>Eliminar</button>
+    </form>
   </section>
 {% endblock %}
