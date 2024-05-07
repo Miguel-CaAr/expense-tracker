@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from expense import views
+from categories import views as views_categories
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -15,5 +16,5 @@ urlpatterns = [
     path('expense/update/<int:expense_id>', views.expense_update, name='expense_update'),
     path('expense/update/delete/<int:expense_id>', views.expense_delete, name='expense_delete'),
     #----------CATEGORIES----------#
-    path('categories/create/', views.category_create, name='category_create'),
+    path('categories/create/', views_categories.category_create, name='category_create'),
 ]

@@ -4,10 +4,9 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
-from .forms import ExpenseForm, CategoryForm
-from .models import Expense, Category
-
-# Create your views here.
+from .forms import ExpenseForm
+from .models import Expense
+from categories.models import Category
 
 
 def home(request):
@@ -67,12 +66,14 @@ def signin(request):
 
 # ----------EXPENSES----------#
 
+
 @login_required
 def expense(request):
     expenses = Expense.objects.filter(user_id=request.user)
     return render(request, 'expense.html', {
         "expenses": expenses,
     })
+
 
 @login_required
 def expense_create(request):
@@ -96,6 +97,7 @@ def expense_create(request):
                 'error': "Verifique los datos ingresados"
             })
 
+
 @login_required
 def expense_update(request, expense_id):
     if request.method == 'GET':
@@ -111,31 +113,10 @@ def expense_update(request, expense_id):
         form.save()
         return redirect("expense")
 
+
 @login_required
 def expense_delete(request, expense_id):
     expense = get_object_or_404(Expense, pk=expense_id, user_id=request.user)
     if request.method == "POST":
         expense.delete()
         return redirect("/expense/")
-
-# ----------CATEGORIES----------#
-
-@login_required
-def category_create(request):
-    if (request.method == "GET"):
-        form = CategoryForm()
-        return render(request, "category_create.html", {
-            "form": form,
-        })
-    else:
-        try:
-            form = CategoryForm(request.POST)
-            newCategory = form.save(commit=False)
-            newCategory.user_id = request.user
-            newCategory.save()
-            return redirect("/expense/")
-        except ValueError:
-            return render(request, "category_create.html", {
-                    "form": form,
-                    "error": "Verifique los datos ingresados"
-                })

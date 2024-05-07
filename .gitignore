@@ -12,4 +12,4 @@ __pycache__/
 # Archivos de construcción
 build/
 #static creado por el comando collectstatic
-static/
+staticfiles/

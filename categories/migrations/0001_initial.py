@@ -10,25 +10,23 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('categories', '__first__'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Expense',
+            name='Category',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('amount', models.DecimalField(decimal_places=2, max_digits=10, verbose_name='Monto del gasto')),
-                ('description', models.TextField(blank=True, max_length=500, verbose_name='Descripcion del monto')),
-                ('date_of_registration', models.DateTimeField(auto_now_add=True, verbose_name='Fecha del registro')),
-                ('category_id', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='categories.category', verbose_name='Categoria del gasto')),
+                ('name', models.CharField(max_length=100, verbose_name='Nombre de la categoria')),
+                ('description', models.TextField(max_length=500, verbose_name='Descripcion de la categoria')),
+                ('date_of_creation', models.DateTimeField(auto_now_add=True, verbose_name='Fecha de creaicon')),
                 ('user_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='ID del usuario')),
             ],
             options={
-                'verbose_name': 'Gasto',
-                'verbose_name_plural': 'Gastos',
-                'db_table': 'Gastos',
+                'verbose_name': 'Categoria',
+                'verbose_name_plural': 'Categorias',
+                'db_table': 'Categoria',
             },
         ),
     ]
