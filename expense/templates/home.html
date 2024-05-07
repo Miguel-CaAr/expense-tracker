@@ -1,6 +1,113 @@
-{% extends 'base.html' %}
-<main>
-  {% block content %}
-  <h1>Home</h1>
-  {% endblock %}
+<main class="home-main">
+  <div class="container">
+    <section class="home-section-text">
+      <h1 class="home-h1">Registro de Gastos diarios</h1>
+      <h1 class="home-h1">controla tus finanzas</h1>
+        <p class="home-p">
+          Registra tus gastos diarios y lleva un control de tus finanzas de manera
+          fácil y rápida.
+          Rregistra tus gastos y mantener un seguimiento
+          detallado de tus finanzas.
+        </p>
+    </section>
+    <section class="home-section-buttons">
+      <a class="home-archor" href="/signin">
+        <button class="home-signin">Iniciar Sesión</button>
+      </a>
+      <a class="home-archor" href="/signup">
+        <button class="home-signup">Registrarse</button>
+      </a>
+    </section>
+  </div>
 </main>
+
+<style>
+  body {
+    margin: 0;
+    font-family: "Arial", "Helvetica", sans-serif;
+  }
+
+  .home-main {
+    height: 100vh;
+    background-color: rgb(17 24 39);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    gap: 2rem;
+  }
+
+  .home-section-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .home-section-text * {
+    margin: 0;
+  }
+
+  .home-h1 {
+    font-size: 3rem; /* Tamaño de texto */
+    background: linear-gradient(to right, #34d399, #60a5fa, #a78bfa); /* Gradiente de fondo */
+    background-clip: text; /* Clip de fondo del texto */
+    color: transparent; /* Color del texto transparente */
+  }
+
+  .home-p {
+    width: 80%;
+    font-size: larger;
+    color: white;
+    text-align: center;
+  }
+
+  .home-signup {
+    background-color: white;
+  }
+
+  .home-signin {
+    background-color: white;
+  }
+
+  .home-section-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  button {
+    font-size: larger;
+    color: white;
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .home-signin {
+    background-color: #3157ff; 
+  }
+
+  .home-signin:hover {
+    background-color: #041046;
+    transition: 0.2s;
+  }
+
+  .home-signup {
+    background-color: #3157ff; 
+  }
+
+  .home-signup:hover {
+    background-color: #041046;
+    transition: 0.2s;
+  }
+</style>
