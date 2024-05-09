@@ -4,39 +4,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Django app</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <title>Expenses tracker</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'expenses.css' %}" />
   </head>
   <body>
-    <nav>
-      <ul>
-        {% if user.is_authenticated %}
-        <li>
-          <a href="/expense">Gastos</a>
-        </li>
-        <li>
-          <a href="/expense/create">Crear gasto</a>
-        </li>
-        <li>
-          <a href="/categories/create/">Crear categoria</a>
-        </li>
-        <li>
-          <a href="/logout">Cerrar sesion</a>
-        </li>
-        {% else %}
-        <li>
-          <a href="/">Inicio</a>
-        </li>
-        <li>
-          <a href="/signup">Registrarse</a>
-        </li>
-        <li>
-          <a href="/signin">Iniciar sesion</a>
-        </li>
-        {% endif %}
-      </ul>
-    </nav>
-
-    {% block content %} {% endblock %}
+    <header>
+      <nav class="nav">
+        <ul class="nav-items">
+          {% if user.is_authenticated %}
+          <li class="nav-expense">
+            <a href="/expense">Gastos</a>
+          </li>
+          <li class="nav-expense-create">
+            <a href="/expense/create">Crear gasto</a>
+          </li>
+          <li class="nav-category-create">
+            <a href="/categories/create/">Crear categoria</a>
+          </li>
+          <li class="nav-category-create">
+            <a href="/chart/expenses-by-category/">Gastos por categoria</a>
+          </li>
+          <li class="nav-logout">
+            <a href="/logout">Cerrar sesion</a>
+          </li>
+          {% else %}
+          <li class="nav-home">
+            <a href="/">Inicio</a>
+          </li>
+          <li class="nav-signup">
+            <a href="/signup">Registrarse</a>
+          </li>
+          <li class="nav-signin">
+            <a href="/signin">Iniciar sesion</a>
+          </li>
+          {% endif %}
+        </ul>
+      </nav>
+    </header>
+    {% block content %}
+    <!-- CONTENIDO DE LAS APPS -->
+    {% endblock %}
   </body>
 </html>

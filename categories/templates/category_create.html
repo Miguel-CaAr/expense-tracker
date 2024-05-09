@@ -1,11 +1,16 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block content %}
+<main>
+  <section>
+    <h1>Crear categoria</h1>
+  </section>
   <section>
     <form method="POST">
-      {% csrf_token %}
+      {% csrf_token %} 
       {{ form.as_p }}
       <button>Guardar</button>
     </form>
   </section>
+</main>
 {% endblock %}

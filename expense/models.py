@@ -7,7 +7,9 @@ class Expense(models.Model):
     user_id = models.ForeignKey(
         User, verbose_name="ID del usuario", on_delete=models.CASCADE)
     amount = models.DecimalField(
-        verbose_name="Monto del gasto", max_digits=10, decimal_places=2)
+        verbose_name="Monto del gasto", blank=False, null=False,max_digits=10, decimal_places=2)
+    title = models.CharField(
+        verbose_name="Titulo del gasto", blank=False, null=False, max_length=50)
     description = models.TextField(
         verbose_name="Descripcion del monto", blank=True, max_length=500)
     category_id = models.ForeignKey(
@@ -21,4 +23,4 @@ class Expense(models.Model):
         verbose_name_plural = "Gastos"
 
     def __str__(self) -> str:
-        return f"{self.description} - by {self.user_id.username}"
+        return f"{self.title} - by {self.user_id.username}"

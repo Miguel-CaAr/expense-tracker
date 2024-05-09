@@ -1,0 +1,42 @@
+.table-container {
+  width: 100vw;
+  box-sizing: border-box;
+  padding: 0% 100px;
+}
+
+.expense-table {
+  width: 100%;
+  border-spacing: 0;
+  border: solid 5px rgb(10, 53, 145);
+  border-radius: 15px;
+}
+
+.expense-table th, .expense-table td {
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid rgb(10, 53, 145);
+}
+
+.expense-table th {
+  background-color: rgb(10, 53, 145);
+  font-weight: bold;
+  color: white;
+}
+
+.expense-table tr:hover {
+  background-color: rgb(10, 53, 145);
+}
+
+.btn-edit {
+  background-color: rgb(10, 53, 145);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+}

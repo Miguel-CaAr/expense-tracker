@@ -17,4 +17,6 @@ urlpatterns = [
     path('expense/update/delete/<int:expense_id>', views.expense_delete, name='expense_delete'),
     #----------CATEGORIES----------#
     path('categories/create/', views_categories.category_create, name='category_create'),
+    #----------OTHERS----------#
+    path('chart/expenses-by-category/',views_categories.expenses_by_category_chart, name="expenses_by_category_chart")
 ]

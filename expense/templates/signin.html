@@ -1,12 +1,26 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block content %}
 <main>
-  {% block content %}
-  <h1>Iniciar sesion</h1>
-  {{error}}
-  <form action="/signin/" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button>Iniciar sesion</button>
-  </form>
-  {% endblock %}
+  <section class="container-title">
+    <h1 class="title">Iniciar sesion</h1>
+    {{error}}
+  </section>
+  <section class="container-form">
+    <form action="/signin/" method="POST">
+      {% csrf_token %}
+      <input
+        id="id_username"
+        name="username"
+        type="text"
+        placeholder="Nombre de usuario"
+      />
+      <input
+        id="id_password"
+        name="password"
+        type="password"
+        placeholder="Contraseña"
+      />
+      <button>Iniciar sesion</button>
+    </form>
+  </section>
 </main>
+{% endblock %}

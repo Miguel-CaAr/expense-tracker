@@ -2,18 +2,34 @@
 
 {% block content %}
 <main>
-  <h1>Gastos</h1>
-  <ul>
-    {% for expense in expenses %}
-    <li>
-      <h3>${{ expense.amount }}</h3>
-      <p>{{ expense.category_id.name }}</p>
-      <p>{{ expense.date_of_registration }}</p>
-      <a href="{% url 'expense_update' expense.id %}">
-        <button>Editar</button>
-      </a>
-    </li>
-    {% endfor %}
-  </ul>
+  <h1 class="title">Gastos</h1>
+  <div class="table-container">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Monto</th>
+          <th>Descripción</th>
+          <th>Categoría</th>
+          <th>Fecha de Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for expense in expenses %}
+        <tr>
+          <td>${{ expense.amount }}</td>
+          <td>{{ expense.title }}</td>
+          <td>{{ expense.category_id.name }}</td>
+          <td>{{ expense.date_of_registration }}</td>
+          <td>
+            <a href="{% url 'expense_update' expense.id %}">
+              <button class="btn-edit">Editar</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </main>
 {% endblock %}

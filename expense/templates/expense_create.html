@@ -1,12 +1,16 @@
-{% extends "base.html" %} 
-{% block content %} 
+{% extends "base.html" %} {% block content %}
 
-<h1>Create expense</h1>
-{{error}}
-<form action="/expense/create/" method="POST">
-  {% csrf_token %} 
-  {{ form.as_p }}
-  <button>Guardar</button>
-</form>
-
+<main>
+  <section>
+    <h1>Crear gasto</h1>
+    {{error}}
+  </section>
+  <section>
+    <form class="form" action="/expense/create/" method="POST">
+      {% csrf_token %}
+       {{ form.as_p }}
+      <button>Guardar</button>
+    </form>
+  </section>
+</main>
 {% endblock %}
