@@ -3,10 +3,14 @@
   <main>
     <section>
       <h1>Detalles del gasto</h1>
-      <p>{{ expense.amount }}</p>
       <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        <input type="number" name="amount" value="{{ form.instance.amount }}" step="0.01" required id="id_amount">
+        <input type="text" name="title" value="{{ form.instance.title }}" maxlength="50" required id="id_title">
+        <textarea name="description" cols="40" rows="10" maxlength="500" id="id_description">{{ form.instance.description }}</textarea>
+        <div>
+          Categoria del gasto: {{ form.category_id }}
+        </div>
         <button>Actualizar</button>
       </form>
       <form action="{% url 'expense_delete' expense.id %}" method="POST">

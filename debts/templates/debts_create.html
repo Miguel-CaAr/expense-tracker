@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<main>
+  <section>
+    <h1>Registrar deudor</h1>
+    {{ error }}
+  </section>
+  <section>
+    <form class="form" action="/debts/create/" method="POST">
+      {% csrf_token %}
+      <input
+        placeholder="Nombre del deudor"
+        type="text"
+        name="debtor_name"
+        maxlength="100"
+        required
+        id="id_debtor_name"
+      />
+      <textarea
+        placeholder="Descripcion"
+        name="description"
+        cols="40"
+        rows="10"
+        maxlength="500"
+        required
+        id="id_description"
+      ></textarea>
+      <input
+        placeholder="Monto de la deuda"
+        type="number"
+        name="amount"
+        step="0.01"
+        required
+        id="id_amount"
+      />
+      <button>Registrar</button>
+    </form>
+  </section>
+</main>
+{% endblock %}

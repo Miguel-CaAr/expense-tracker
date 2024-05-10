@@ -21,7 +21,7 @@ def category_create(request):
             newCategory = form.save(commit=False)
             newCategory.user_id = request.user
             newCategory.save()
-            return redirect("/expense/")
+            return redirect("/expense/create")
         except ValueError:
             return render(request, "category_create.html", {
                 "form": form,

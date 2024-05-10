@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block content %}
+<main>
+  <section>
+    <h1>Pago de deudor</h1>
+    {{ error }}
+    {{ success }}
+    <form>
+      <input
+        disabled
+        type="number"
+        name="amount"
+        value="{{ form.instance.amount }}"
+        step="0.01"
+        required
+        id="id_amount"
+      />
+      <input
+        disabled
+        type="text"
+        name="debtor_name"
+        value="{{ form.instance.debtor_name }}"
+        maxlength="50"
+        required
+        id="debtor_name"
+      />
+    </form>
+    <hr />
+    <form action="{% url 'debt_pay' debt.id %}" method="POST">
+      {% csrf_token %}
+      <input
+        placeholder="Ingrese monto de abono"
+        type="number"
+        name="amount_pay"
+        step="0.01"
+        id="amount_pay"
+        required
+      />
+      <button>Restar</button>
+    </form>
+  </section>
+</main>
+{% endblock %}

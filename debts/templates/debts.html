@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <h1 class="title">Deudores</h1>
+  <div class="table-container">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Monto/Dinero</th>
+          <th>Fecha de Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for debt in debts %}
+        <tr>
+          <td>${{ debt.amount }}</td>
+          <td>{{ debt.debtor_name }}</td>
+          <td>{{ debt.description }}</td>
+          <td>{{ debt.date_of_creation }}</td>
+          <td>
+            <a href="{% url 'debt_pay' debt.id %}">
+              <button class="btn-edit">Abonar</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

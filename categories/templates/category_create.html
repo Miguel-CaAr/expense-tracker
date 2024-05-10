@@ -1,14 +1,28 @@
-{% extends "base.html" %} 
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <main>
   <section>
     <h1>Crear categoria</h1>
   </section>
   <section>
     <form method="POST">
-      {% csrf_token %} 
-      {{ form.as_p }}
+      {% csrf_token %}
+      <input
+        placeholder="Nombre"
+        type="text"
+        name="name"
+        maxlength="100"
+        required
+        id="id_name"
+      />
+      <textarea
+        placeholder="Descripcion"
+        name="description"
+        cols="40"
+        rows="10"
+        maxlength="500"
+        required
+        id="id_description"
+      ></textarea>
       <button>Guardar</button>
     </form>
   </section>
