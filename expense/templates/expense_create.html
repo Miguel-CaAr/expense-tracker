@@ -6,8 +6,8 @@
     <h1>Crear gasto</h1>
     {{error}}
   </section>
-  <section>
-    <form class="form" action="/expense/create/" method="POST">
+  <section class="form">
+    <form action="/expense/create/" method="POST">
       {% csrf_token %}
       <input placeholder="Monto/Precio" type="number" name="amount" step="0.01" required id="id_amount">
       <input placeholder="Titulo" type="text" name="title" maxlength="50" required id="id_title">
@@ -15,7 +15,7 @@
       <div> 
         Categoria: {{ form.category_id }}
        </div>
-       <button>Guardar</button>
+       <button class="btn-form">Guardar</button>
     </form>
   </section>
 </main>

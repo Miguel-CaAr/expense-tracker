@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block content %}
   <main>
-    <section>
-      <h1>Detalles del gasto</h1>
+    <h1>Detalles del gasto</h1>
+    <section class="form">
       <form method="POST">
         {% csrf_token %}
         <input type="number" name="amount" value="{{ form.instance.amount }}" step="0.01" required id="id_amount">
@@ -11,11 +11,11 @@
         <div>
           Categoria del gasto: {{ form.category_id }}
         </div>
-        <button>Actualizar</button>
+        <button class="btn-form">Actualizar</button>
       </form>
       <form action="{% url 'expense_delete' expense.id %}" method="POST">
         {% csrf_token %}
-        <button>Eliminar</button>
+        <button class="btn-form eliminar">Eliminar</button>
       </form>
     </section>
   </main>

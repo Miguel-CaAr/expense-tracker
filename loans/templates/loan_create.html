@@ -4,8 +4,8 @@
     <h1>Registra prestamo</h1>
     {{error}}
   </section>
-  <section>
-    <form class="form" action="/loans/create" method="POST">
+  <section class="form">
+    <form action="/loans/create" method="POST">
       {% csrf_token %}
       <input
         placeholder="Prestamista"
@@ -31,7 +31,7 @@
         maxlength="500"
         id="id_description"
       ></textarea>
-      <button>Guardar</button>
+      <button class="btn-form">Guardar</button>
     </form>
   </section>
 </main>

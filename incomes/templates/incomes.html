@@ -2,7 +2,17 @@
 
 {% block content %}
 <main>
-  <h1 class="title">Ingresos</h1>
+  <section class="header">
+    <h1 class="title">Ingresos</h1>
+    <div class="actions">
+      <a href="/incomes/create">
+        <button>Registrar ingreso</button>
+      </a>
+      <a href="/chart/incomes_by_source/">
+        <button>Grafica ingresos por fuente</button>
+      </a>
+    </div>
+  </section>
   <div class="table-container">
     <table class="expense-table">
       <thead>
@@ -22,10 +32,12 @@
           <td>{{ income.amount }}</td>
           <td>{{ income.date_of_registration }}</td>
           <td>
-            <form action="{% url 'income_delete' income.id %}" method="POST">
-              {% csrf_token %}
-              <button>Eliminar</button>
-            </form>
+            <a>
+              <form action="{% url 'income_delete' income.id %}" method="POST">
+                {% csrf_token %}
+                <button class="eliminar">Eliminar</button>
+              </form>
+            </a>
           </td>
         </tr>
         {% endfor %}

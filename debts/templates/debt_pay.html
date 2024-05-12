@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 <main>
-  <section>
-    <h1>Pago de deudor</h1>
+  <h1>Pago de deudor</h1>
+  <section class="form">
     {{ error }}
     {{ success }}
     <form>
@@ -35,7 +35,7 @@
         id="amount_pay"
         required
       />
-      <button>Restar</button>
+      <button class="abonar-debt">Restar</button>
     </form>
   </section>
 </main>

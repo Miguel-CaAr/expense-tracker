@@ -1,10 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 <main>
-  <section class="container-title">
-    <h1 class="title">Iniciar sesion</h1>
+  <h1 class="title-login">Iniciar sesion</h1>
     {{error}}
-  </section>
-  <section class="container-form">
+  <section class="form" class="container-form">
     <form action="/signin/" method="POST">
       {% csrf_token %}
       <input
@@ -19,7 +17,7 @@
         type="password"
         placeholder="Contraseña"
       />
-      <button>Iniciar sesion</button>
+      <button class="btn-form">Iniciar sesion</button>
     </form>
   </section>
 </main>

@@ -2,7 +2,14 @@
 
 {% block content %}
 <main>
-  <h1 class="title">Prestamos</h1>
+  <section class="header">
+    <h1 class="title">Prestamos</h1>
+    <div class="actions">
+      <a href="/loans/create">
+        <button>Registrar prestamo</button>
+      </a>
+    </div>
+  </section>
   <div class="table-container">
     <table class="expense-table">
       <thead>
@@ -23,7 +30,7 @@
           <td>{{ loan.date_of_registration }}</td>
           <td>
             <a href="{% url 'loan_pay' loan.id %}">
-              <button class="btn-edit">Abonar</button>
+              <button class="btn-edit abonar">Abonar</button>
             </a>
           </td>
         </tr>

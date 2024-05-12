@@ -3,7 +3,7 @@
   <section>
     <h1>Crear categoria</h1>
   </section>
-  <section>
+  <section class="form">
     <form method="POST">
       {% csrf_token %}
       <input
@@ -23,7 +23,7 @@
         required
         id="id_description"
       ></textarea>
-      <button>Guardar</button>
+      <button class="btn-form">Guardar</button>
     </form>
   </section>
 </main>

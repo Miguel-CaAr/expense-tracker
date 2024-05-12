@@ -4,65 +4,126 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Expenses tracker</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Administrador Finanzas</title>
     <link rel="stylesheet" type="text/css" href="{% static 'main.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'expenses.css' %}" />
   </head>
   <body>
-    <header>
-      <nav class="nav">
-        <ul class="nav-items">
-          {% if user.is_authenticated %}
-          <li class="nav-expense">
-            <a href="/expense">Gastos</a>
-          </li>
-          <li class="nav-expense-create">
-            <a href="/expense/create">Crear gasto</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/categories/create/">Crear categoria</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/chart/expenses-by-category/">Gastos por categoria</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/debts/create/">Registrar deudor</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/debts/">Deudores</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/loans/">Prestamos</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/loans/create">Registrar prestamos</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/incomes/">Ingresos</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/incomes/create">Crear Ingresos</a>
-          </li>
-          <li class="nav-category-create">
-            <a href="/chart/incomes_by_source/">Ingresos por fuente</a>
-          </li>
-          <li class="nav-logout">
-            <a href="/logout">Cerrar sesion</a>
-          </li>
-          {% else %}
-          <li class="nav-home">
-            <a href="/">Inicio</a>
-          </li>
-          <li class="nav-signup">
-            <a href="/signup">Registrarse</a>
-          </li>
-          <li class="nav-signin">
-            <a href="/signin">Iniciar sesion</a>
-          </li>
-          {% endif %}
-        </ul>
-      </nav>
-    </header>
+    <nav>
+      <div class="logo">
+        <h1>Admin Finanzas</h1>
+      </div>
+      <ul>
+        {% if user.is_authenticated %}
+        <li class="nav-expense">
+          <a href="/expense">Gastos</a>
+        </li>
+        <!-- <li class="nav-expense-create">
+          <a href="/expense/create">Crear gasto</a>
+        </li>
+        <li class="nav-category-create">
+          <a href="/categories/create/">Crear categoria</a>
+        </li>
+        <li class="nav-category-create">
+          <a href="/chart/expenses-by-category/">Gastos por categoria</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/debts/">Deudores</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/debts/create/">Registrar deudor</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/loans/">Prestamos</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/loans/create">Registrar prestamos</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/incomes/">Ingresos</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/incomes/create">Crear Ingresos</a>
+        </li> -->
+        <!-- <li class="nav-category-create">
+          <a href="/chart/incomes_by_source/">Ingresos por fuente</a>
+        </li> -->
+        <li class="nav-logout">
+          <a href="/logout">Cerrar sesion</a>
+        </li>
+        {% else %}
+        <li class="nav-home">
+          <a href="/">Inicio</a>
+        </li>
+        <li class="nav-signup">
+          <a href="/signup">Registrarse</a>
+        </li>
+        <li class="nav-signin">
+          <a href="/signin">Iniciar sesion</a>
+        </li>
+        {% endif %}
+      </ul>
+      <div class="hamburger">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </nav>
+    <div class="menubar">
+      <ul>
+        {% if user.is_authenticated %}
+        <li class="nav-expense">
+          <a href="/expense">Gastos</a>
+        </li>
+        <!-- <li class="nav-expense-create">
+          <a href="/expense/create">Crear gasto</a>
+        </li>
+        <li class="nav-category-create">
+          <a href="/categories/create/">Crear categoria</a>
+        </li>
+        <li class="nav-category-create">
+          <a href="/chart/expenses-by-category/">Gastos por categoria</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/debts/">Deudores</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/debts/create/">Registrar deudor</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/loans/">Prestamos</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/loans/create">Registrar prestamos</a>
+        </li> -->
+        <li class="nav-category-create">
+          <a href="/incomes/">Ingresos</a>
+        </li>
+        <!-- <li class="nav-category-create">
+          <a href="/incomes/create">Crear Ingresos</a>
+        </li> -->
+        <!-- <li class="nav-category-create">
+          <a href="/chart/incomes_by_source/">Ingresos por fuente</a>
+        </li> -->
+        <li class="nav-logout">
+          <a href="/logout">Cerrar sesion</a>
+        </li>
+        {% else %}
+        <li class="nav-home">
+          <a href="/">Inicio</a>
+        </li>
+        <li class="nav-signup">
+          <a href="/signup">Registrarse</a>
+        </li>
+        <li class="nav-signin">
+          <a href="/signin">Iniciar sesion</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
     {% block content %}
     <!-- CONTENIDO DE LAS APPS -->
     {% endblock %}

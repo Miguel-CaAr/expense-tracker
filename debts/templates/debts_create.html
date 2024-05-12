@@ -4,8 +4,8 @@
     <h1>Registrar deudor</h1>
     {{ error }}
   </section>
-  <section>
-    <form class="form" action="/debts/create/" method="POST">
+  <section class="form">
+    <form action="/debts/create/" method="POST">
       {% csrf_token %}
       <input
         placeholder="Nombre del deudor"

@@ -1,8 +1,19 @@
-{% extends "base.html" %} 
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <main>
-  <h1 class="title">Gastos</h1>
+  <section class="header">
+    <h1 class="title">Gastos</h1>
+    <div class="actions">
+      <a href="/expense/create">
+        <button>Registrar gasto</button>
+      </a>
+      <a href="/categories/create/">
+        <button>Crear categoria</button>
+      </a>
+      <a href="/chart/expenses-by-category/">
+        <button>Grafica de gastos por categoria</button>
+      </a>
+    </div>
+  </section>
   <div class="table-container">
     <table class="expense-table">
       <thead>
@@ -23,7 +34,7 @@
           <td>{{ expense.date_of_registration }}</td>
           <td>
             <a href="{% url 'expense_update' expense.id %}">
-              <button class="btn-edit">Editar</button>
+              <button class="btn-edit editar">Editar</button>
             </a>
           </td>
         </tr>

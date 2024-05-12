@@ -4,7 +4,7 @@
     <h1>Registrarse</h1>
     {{error}}
   </section>
-  <section>
+  <section class="form">
     <form id="form_signup" action="/signup/" method="POST">
       {% csrf_token %}
       <!-- {{form.as_p}} -->
@@ -26,7 +26,7 @@
         type="password"
         placeholder="Ingrese de nuevo la contraseña"
       />
-      <button id="btn-signup">Registrarse</button>
+      <button id="btn-signup" class="btn-form">Registrarse</button>
     </form>
   </section>
 </main>

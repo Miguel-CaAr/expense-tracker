@@ -2,7 +2,14 @@
 
 {% block content %}
 <main>
-  <h1 class="title">Deudores</h1>
+  <section class="header">
+    <h1 class="title">Deudores</h1>
+    <div class="actions">
+      <a href="/debts/create/">
+        <button>Registrar deudor</button>
+      </a>
+    </div>
+  </section>
   <div class="table-container">
     <table class="expense-table">
       <thead>
@@ -23,7 +30,7 @@
           <td>{{ debt.date_of_creation }}</td>
           <td>
             <a href="{% url 'debt_pay' debt.id %}">
-              <button class="btn-edit">Abonar</button>
+              <button class="btn-edit abonar">Abonar</button>
             </a>
           </td>
         </tr>
