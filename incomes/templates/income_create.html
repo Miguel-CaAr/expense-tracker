@@ -1,0 +1,37 @@
+{% extends "base.html" %} {% block content %}
+<main>
+  <section>
+    <h1>Registrar ingreso</h1>
+    {{error}}
+  </section>
+  <section>
+    <form class="form" action="/incomes/create" method="POST">
+      {% csrf_token %}
+      <input
+        placeholder="Nombre de la fuente de ingreso"
+        type="text"
+        name="source"
+        maxlength="50"
+        required
+        id="id_source"
+      />
+      <input
+        placeholder="Monto de ingreso"
+        type="number"
+        name="amount"
+        step="0.01"
+        required
+        id="id_amount"
+      />
+      <textarea
+        name="description"
+        cols="40"
+        rows="10"
+        maxlength="500"
+        id="id_description"
+      ></textarea>
+      <button>Guardar</button>
+    </form>
+  </section>
+</main>
+{% endblock %}

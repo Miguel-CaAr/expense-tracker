@@ -33,7 +33,12 @@ urlpatterns = [
     path('loans/', views_loans.loans, name="loans"),
     path('loans/create', views_loans.loan_create, name="loans"),
     path('loans/pay/<int:loan_id>', views_loans.loan_pay, name="loan_pay"),
-    # ----------LOANS----------#
+    # ----------INCOMES----------#
     path('incomes/', views_incomes.incomes, name="incomes"),
+    path('incomes/create', views_incomes.incomes_create, name="income_create"),
+    path('incomes/delete/<int:income_id>',
+         views_incomes.income_delete, name='income_delete'),
+    path('chart/incomes_by_source/', views_incomes.incomes_by_source_chart,
+         name="incomes_by_source_chart"),
 
 ]

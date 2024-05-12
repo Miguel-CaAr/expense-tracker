@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+  <h1>Ingresos totales por fuente de ingreso</h1>
+  <section class="chart">
+    <canvas id="myChart"></canvas>
+  </section>
+</main>
+
+<style>
+  .chart{
+    width: 50vw;
+  }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+  const ctx = document.getElementById('myChart');
+  //'safe' es un filtro de plantilla que se utiliza para marcar una cadena como "segura"
+  // Lo que sinifica que tiene un formato correcto y no es codigo malicioso
+  const dataFromDjango = '{{ data | safe }}';
+  const dataParsed = JSON.parse(dataFromDjango)
+  labels = dataParsed.map(_data => _data.source);
+  totals = dataParsed.map(_data => _data.amount);
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Pesos',
+        data: totals,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
+{% endblock %}

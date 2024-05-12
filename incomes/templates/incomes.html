@@ -22,7 +22,10 @@
           <td>{{ income.amount }}</td>
           <td>{{ income.date_of_registration }}</td>
           <td>
-            <button class="btn-edit">No implementado</button>
+            <form action="{% url 'income_delete' income.id %}" method="POST">
+              {% csrf_token %}
+              <button>Eliminar</button>
+            </form>
           </td>
         </tr>
         {% endfor %}

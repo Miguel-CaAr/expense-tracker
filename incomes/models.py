@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class incomes(models.Model):
+class Incomes(models.Model):
     user_id = models.ForeignKey(
         User, verbose_name="ID del usuairo", on_delete=models.CASCADE)
     amount = models.DecimalField(
