@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<main>
+  <h1 class="title">Ingresos</h1>
+  <div class="table-container">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Fuente de ingreso</th>
+          <th>Descripcion</th>
+          <th>Monto/Dinero</th>
+          <th>Fecha de Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for income in incomes %}
+        <tr>
+          <td>{{ income.source }}</td>
+          <td>{{ income.description }}</td>
+          <td>{{ income.amount }}</td>
+          <td>{{ income.date_of_registration }}</td>
+          <td>
+            <button class="btn-edit">No implementado</button>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

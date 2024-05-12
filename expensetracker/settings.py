@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "expense",
     "categories",
     "debts",
+    "loans",
+    "incomes",
 ]
 
 MIDDLEWARE = [

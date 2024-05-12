@@ -1,0 +1,35 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+<main>
+  <h1 class="title">Prestamos</h1>
+  <div class="table-container">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>Prestamista</th>
+          <th>Descripcion</th>
+          <th>Monto/Dinero</th>
+          <th>Fecha de Registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for loan in loans %}
+        <tr>
+          <td>{{ loan.lender }}</td>
+          <td>{{ loan.description }}</td>
+          <td>{{ loan.amount }}</td>
+          <td>{{ loan.date_of_registration }}</td>
+          <td>
+            <a href="{% url 'loan_pay' loan.id %}">
+              <button class="btn-edit">Abonar</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}
