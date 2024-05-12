@@ -80,6 +80,7 @@ WSGI_APPLICATION = 'expensetracker.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#---------BASE DE DATOS MYSQLITE----------#
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -87,6 +88,17 @@ DATABASES = {
     }
 }
 
+#---------BASE DE DATOS POSTGRESQL----------#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'postgres', # Nombre de la base de datos
+#         'USER': 'postgres', # Usuario de PostgreSQL
+#         'PASSWORD': '28042703', # Contraseña de PostgreSQL
+#         'HOST': 'localhost', # Host de la base de datos
+#         'PORT': '5432', # Puerto de PostgreSQL
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

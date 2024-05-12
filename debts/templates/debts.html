@@ -24,9 +24,9 @@
       <tbody>
         {% for debt in debts %}
         <tr>
-          <td>${{ debt.amount }}</td>
           <td>{{ debt.debtor_name }}</td>
           <td>{{ debt.description }}</td>
+          <td>${{ debt.amount }}</td>
           <td>{{ debt.date_of_creation }}</td>
           <td>
             <a href="{% url 'debt_pay' debt.id %}">
