@@ -14,3 +14,11 @@ source ./venv/bin/activate #Mac Os
 ```bash
 pip3 install -r ./requirement.txt
 ```
+## Recoleccion de archvios estaticos
+```bash
+python3 manage.py collectstatic
+```
+## Ejecucion
+```bash
+python3 manage.py runserver
+```
