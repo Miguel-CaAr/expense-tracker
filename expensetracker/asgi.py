@@ -1,9 +1,11 @@
 """
-ASGI config for expensetracker project.
+El archivo asgi.py en una aplicación de Django es un punto de entrada para las aplicaciones que se 
+ejecutan en ASGI (Asynchronous Server Gateway Interface). ASGI es una especificación que permite a las 
+aplicaciones web de Python manejar conexiones asincrónicas, lo que es especialmente útil para 
+aplicaciones en tiempo real y otras aplicaciones que requieren una gestión eficiente de múltiples 
+conexiones.
 
-It exposes the ASGI callable as a module-level variable named ``application``.
-
-For more information on this file, see
+Para mas informacion:
 https://docs.djangoproject.com/en/5.0/howto/deployment/asgi/
 """
 

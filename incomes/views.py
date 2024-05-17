@@ -5,7 +5,7 @@ from .form import IncomesForm
 import json
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def incomes(request):
     incomes = Incomes.objects.filter(user_id=request.user)
     return render(request, "incomes.html", {
@@ -13,7 +13,7 @@ def incomes(request):
     })
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def incomes_create(request):
     if request.method == 'GET':
         form = IncomesForm()
@@ -34,7 +34,7 @@ def incomes_create(request):
             })
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def incomes_by_source_chart(request):
     incomes = Incomes.objects.filter(user_id=request.user)
     income_sum_by_source = {}  # Diccionario para almacenar la suma de ingresos por fuente
@@ -53,7 +53,7 @@ def incomes_by_source_chart(request):
     })
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def income_delete(request, income_id):
     income = get_object_or_404(Incomes, pk=income_id, user_id=request.user)
     if request.method == "POST":

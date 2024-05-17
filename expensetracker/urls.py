@@ -6,7 +6,9 @@ from debts import views as views_debts
 from loans import views as views_loans
 from incomes import views as views_incomes
 
+#? Lista de obtejos path que define las urls que el proyecto puede manejar y sus correspondientes funciones
 urlpatterns = [
+    #? 'path' es una funcion que recibe tres argumentos para definir la ruta/url
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     # ----------LOGIN AND REGISTER----------#

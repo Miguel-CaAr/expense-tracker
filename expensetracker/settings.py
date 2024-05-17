@@ -10,8 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-from pathlib import Path
-import os
+from pathlib import Path #? Modulo que ofrece clases que representan rutas con semántica apropiada para diferentes sistemas operativos.
+import os #? Importacion del modulo 'os' para interactuar con el sistema operativo
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+#? Aqui se registran las aplicaciones del proyecto, ya incluye algunas precargadas por Django.
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +46,8 @@ INSTALLED_APPS = [
     "incomes",
 ]
 
+#? Dependencias middleware son mediadores entre el backend y el frontend
+#? "El middleware es una capa de procesamiento en el lado del servidor que actúa sobre las solicitudes y respuestas HTTP antes y después de ser manejadas por la aplicación web"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -56,8 +58,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+#? Es una configuración en Django que define el módulo de URL principal para tu proyecto
 ROOT_URLCONF = 'expensetracker.urls'
 
+#? Define como se renderizan las plantillas en la aplicacion web
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -74,12 +78,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'expensetracker.wsgi.application'
+#? Es una especificación de Python que describe cómo un servidor web puede comunicarse con una aplicación web escrita en Python.
+WSGI_APPLICATION = 'expensetracker.wsgi.application'   
 
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+#? Configuraciones para la base de datos
 #---------BASE DE DATOS MYSQLITE----------#
 DATABASES = {
     'default': {
@@ -101,8 +107,8 @@ DATABASES = {
 # }
 
 # Password validation
-# https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
+#? Es una configuración en Django que te permite definir una lista de validadores que se aplicarán a las contraseñas de los usuarios para garantizar que cumplan con ciertos criterios de seguridad. 
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -122,6 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
+#? Configuracion para el lenguaje, zona horaria 
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'America/Los_Angeles'
@@ -134,16 +141,20 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+#? Configuracion de la URL base para los archivos estáticos servidos por la aplicación 
 STATIC_URL = 'static/'
 
+#? Configuracion para que Django busque archivos adicionales
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'expense/static'),
 ]
 
+#? Ruta para los archivos estaticos al recolectarlos con el comando 'collectstatic'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
-# Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+# Default primary key field type
 
+#? Es una configuración en Django que te permite especificar el tipo de campo automático que se utilizará para la clave primaria de los modelos si no se especifica explícitamente ningún campo primario en el modelo.
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

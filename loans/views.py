@@ -5,14 +5,14 @@ from .models import Loans
 from .form import LoansForm
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def loans(request):
     loans = Loans.objects.filter(user_id=request.user)
     return render(request, "loans.html", {
         'loans': loans
     })
 
-
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def loan_create(request):
     if request.method == 'GET':
         form = LoansForm()
@@ -33,7 +33,7 @@ def loan_create(request):
             })
 
 
-@login_required
+@login_required #? Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
 def loan_pay(request, loan_id):
     try:
         if request.method == 'GET':
