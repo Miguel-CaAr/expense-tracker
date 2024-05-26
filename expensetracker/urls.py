@@ -6,9 +6,9 @@ from debts import views as views_debts
 from loans import views as views_loans
 from incomes import views as views_incomes
 
-#? Lista de obtejos path que define las urls que el proyecto puede manejar y sus correspondientes funciones
+# ? Lista de obtejos path que define las urls que el proyecto puede manejar y sus correspondientes funciones
 urlpatterns = [
-    #? 'path' es una funcion que recibe tres argumentos para definir la ruta/url
+    # ? 'path' es una funcion que recibe tres argumentos para definir la ruta/url
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     # ----------LOGIN AND REGISTER----------#
@@ -23,6 +23,8 @@ urlpatterns = [
     path('expense/update/delete/<int:expense_id>',
          views.expense_delete, name='expense_delete'),
     # ----------CATEGORIES----------#
+    path('categories/', views_categories.categories,
+         name='categories'),
     path('categories/create/', views_categories.category_create,
          name='category_create'),
     path('chart/expenses-by-category/', views_categories.expenses_by_category_chart,

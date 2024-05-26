@@ -1,0 +1,43 @@
+{% extends "base.html" %} 
+
+{% block content %}
+<main>
+  <section class="header">
+    <h1 class="title">Categorías</h1>
+    <div class="actions">
+      <a href="/categories/create/">
+        <button>Crear categoria</button>
+      </a>
+      <a href="/chart/expenses-by-category/">
+        <button>Grafica de gastos por categoria</button>
+      </a>
+    </div>
+  </section>
+  <div class="table-container">
+    <table class="expense-table">
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>Descripción</th>
+          <th>Fecha de creacion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for category in categories %}
+        <tr>
+          <td>{{ category.name }}</td>
+          <td>${{ category.description }}</td>
+          <td>{{ category.date_of_creation }}</td>
+          <td>
+            <a href="#">
+              <button class="btn-edit editar">Editar</button>
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</main>
+{% endblock %}

@@ -1,12 +1,24 @@
-from django.shortcuts import render, redirect # Funciones para renderizar y redirigir respectivamente
-from django.contrib.auth.decorators import login_required # Decorador proteger rutas
-from .forms import CategoryForm # Formulario de 'Categorias'
-from categories.models import Category # Modelo de 'Categorias'
-from expense.models import Expense # Modelo de 'Gastos'
-import json # es un módulo para codificar y decodificar datos en formato JSON.
+# Funciones para renderizar y redirigir respectivamente
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required  # Decorador proteger rutas
+from .forms import CategoryForm  # Formulario de 'Categorias'
+from categories.models import Category  # Modelo de 'Categorias'
+from expense.models import Expense  # Modelo de 'Gastos'
+import json  # es un módulo para codificar y decodificar datos en formato JSON.
 
 # ----------CATEGORIES----------#
-@login_required # Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
+
+
+@login_required
+def categories(request):
+    categories = Category.objects.filter(user_id=request.user)
+    return render(request, 'categories.html', {
+        'categories': categories
+    })
+
+
+# Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
+@login_required
 # Funcion que toma una solicitud de Django como param
 def category_create(request):
     # Estructura condicional que verifica si el metodo de la solicitud es 'GET'
@@ -38,15 +50,17 @@ def category_create(request):
                 "form": form,
                 "error": "Verifique los datos ingresados"
             })
-            
-@login_required # Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
+
+
+# Decorador para proteger ruta / Acceso a la vista solo a usuarios autenticados
+@login_required
 # Funcion que toma la solicitud de como param
 def expenses_by_category_chart(request):
     # Instancia de los datos de 'Categorias', filtro para traer datos donde el id sea el del usuario logeado
-    categories = Category.objects.filter(user_id = request.user)
+    categories = Category.objects.filter(user_id=request.user)
     # Instancia de los datos de 'Gastos', filtro para traer datos donde el id sea el del usuario logeado
-    expenses = Expense.objects.filter(user_id = request.user)
-    # Se declara una lista para almacenar las categorias con los totales de los gastos relacionados 
+    expenses = Expense.objects.filter(user_id=request.user)
+    # Se declara una lista para almacenar las categorias con los totales de los gastos relacionados
     data = []
     # Itera en cada categoria de la instancia a 'Categorias'
     for category in categories:
@@ -60,9 +74,10 @@ def expenses_by_category_chart(request):
                 totalExpenses += float(expense.amount)
         # '.append' metodo para agregar al final de la lista la categoria una vez terminado el ciclo
         # con el total de gastos que tienen la relacion con la categoria
-        data.append({"id": category.id, "name": category.name, "total": totalExpenses})
+        data.append({"id": category.id, "name": category.name,
+                    "total": totalExpenses})
     # Se retorna la renderizacion de la grafica con los datos convertidos en JSON para ser
     # facilmente manipulables por JavaScript
     return render(request, "expenses_by_category_chart.html", {
-        "data": json.dumps(data) #Se manda como un JSON
-        })
+        "data": json.dumps(data)  # Se manda como un JSON
+    })
